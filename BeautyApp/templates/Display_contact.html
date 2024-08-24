@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{%  block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+</head>
+<body>
+<div class="pd-20 card-box mb-30">
+					<div class="clearfix mb-20">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Contact details</h4>
+<!--							<p>Use classes <code>( .table-active, .table-success, .table-info, .table-warning, .table-danger )</code> to color table rows or individual cells</p>-->
+						</div>
+
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="table-active">Id</th>
+									<th class="table-active">Name</th>
+									<th class="table-active">Email</th>
+									<th class="table-active">Subject</th>
+									<th class="table-active">Message</th>
+									<th class="table-active">Options</th>
+									<th class="table-active"></th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for d in Cdata %}
+								<tr>
+									<td>{{d.id}}</td>
+									<td>{{d.contact_name}}</td>
+									<td>{{d.contact_mail}}</td>
+									<td>{{d.contact_sub}}</td>
+									<td>{{d.contact_msg}}</td>
+									<td>
+										<a href="{% url 'contact_delete' contid=d.id %}">
+                              <button type="button" class="btn btn-dark btn-icon-text">DELETE<i class="ti-trash btn-icon-append"></i></button>
+                            </a>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+</head>
+<body>
+
+<form action="#" method="post">
+    {% csrf_token %}
+
+    <div style="text-align:center; margin-top:-250px;">
+        <h1 style="font-family:arial;font-size:70px;margin-top:-100px;">Proceed to Payment</h1>
+         <input type="hidden" name="" >
+        <h2 style="font-family:monospace;font-size:40px;padding-top:10px;">Payment from :{{customer.cart_username}}</h2>
+
+
+
+<!--        <img src="{% static 'assets/cash-payment-icon-5.png' %}" width="100px;" height="100px;">-->
+        <br>
+            <button class="btn">Make Payment</button>
+    </div>
+
+</form>
+
+    <!-- Include Razorpay script for payment -->
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+            font-family: cursive;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            background-image: url({% static 'Assets/img/nanpaymnt.jpg' %});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size:cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #bbbbbb;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px 0px rgb(0 0 0 / 25%);
+        }
+        .title {
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .muted {
+            color: #706969;
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .btn_container {
+            padding: 20px;
+            text-align: center;
+        }
+        .btn {
+            border-radius: 6px;
+            cursor: pointer;
+            padding: 4px 8px;
+            background-color: #cb6922;
+            color: black;
+            font-size: 1.4em;
+            font-weight: 400;
+            font-family: sans-serif;
+            letter-spacing: 2px;
+            width:200px;
+            height:40px;
+        }
+    </style>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+data-key = "rzp_test_6zd4gObhULgiip"
+data-amount = "{{payy_str}}"
+data-currency = "INR"
+data-order_id = "{{payment.order_id}}"
+data-buttontext=""
+data-description="Your description"
+data-name = "Nans Luxury Beauty Lounge"
+data-image=""
+data-theme.color="#ae5514"
+
+
+>
+</script>
+
+
+</body>
+</html>

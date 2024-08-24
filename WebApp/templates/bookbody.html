@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nans Luxury Beauty Lounge</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'Assets/img/favicon.ico" rel="icon' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'Assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'Assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'Assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+<!--    <div class="container-fluid bg-dark text-light px-0 py-2">-->
+<!--        <div class="row gx-0 d-none d-lg-flex">-->
+<!--            <div class="col-lg-7 px-5 text-start">-->
+<!--                <div class="h-100 d-inline-flex align-items-center me-4">-->
+<!--                    <span class="fa fa-phone-alt me-2"></span>-->
+<!--                    <span>+012 345 6789</span>-->
+<!--                </div>-->
+<!--                <div class="h-100 d-inline-flex align-items-center">-->
+<!--                    <span class="far fa-envelope me-2"></span>-->
+<!--                    <span>info@example.com</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-5 px-5 text-end">-->
+<!--                <div class="h-100 d-inline-flex align-items-center mx-n2">-->
+<!--                    <span>Follow Us:</span>-->
+<!--                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>-->
+<!--                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>-->
+<!--                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>-->
+<!--                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg  "  style="opacity;50%">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="knockout"  >Nans Luxury Beauty Lounge</h1>
+            <style>
+                .knockout {
+  vertical-align: middle;
+  text-align: center;
+  margin-left:-30px;
+  font-family: 'gwendolyn', cursive;
+  font-weight:bolder;
+  font-size:60px;
+  color: blue;
+  color: #fff;
+  background: linear-gradient(110deg, #946dbd 33%, rgba(0, 0, 0, 0) 33%), linear-gradient(110deg, #807c85 34%, #c7395f 34%);
+  background-size: 400%;
+   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.knockout{
+    animation: Gradient 2s ease infinite;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 1s ease infinite;
+}
+ @-webkit-keyframes Gradient {
+  0% {
+    background-position: 50% 100%
+  }
+  50% {
+    background-position: 5% 30%
+  }
+  100% {
+    background-position: 30% 5%
+  }
+
+}
+            </style>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <style>
+                    .nav-link {
+                    color:#f0cc6e; }
+                    .navbar .navbar-nav .nav-link.active  {
+                    color:#9e83bb;}
+                    .navbar .navbar-nav .nav-link:hover {
+                    color:#c7395f;}
+                </style>
+                <a href="{% url 'About_page' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'our_services' %}" class="nav-item nav-link">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+                    <div class="dropdown-menu bg-light m-0">
+                       {% for i in category %}
+                        <a href="{% url 'filtered_services' cat_name=i.catg_name %}" class="dropdown-item">{{i.catg_name}}</a>
+                        {% endfor %}
+
+
+<!--                        <a href="quote.html" class="dropdown-item">Free Quote</a>-->
+<!--                        <a href="team.html" class="dropdown-item">Our Team</a>-->
+<!--                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>-->
+<!--                        <a href="404.html" class="dropdown-item">404 Page</a>-->
+                    </div>
+
+                </div>
+                <a href="{% url 'contact_page' %}" class="nav-item nav-link">Contact</a>
+                {% if request.session.signup_name %}
+				<a href="{% url 'logout_page' %}">Welcome {{request.session.signup_name}}/Log out</a>
+				{% else %}
+				<a href="{% url 'signup_page' %}">Register/Sign in</a>
+				{% endif %}
+
+            </div>
+<!--            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>-->
+        <style>
+            .btn-primary {
+            background-color: #c7395f;
+            border-color: #f085c9;}
+            .btn-primary:hover{
+              background-color: #9e83bb;
+              border-color: #f085c9;}
+        </style>
+        </div>
+    </nav>
+
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Free Quote</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Free Quote</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Quote Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="fs-5 fw-bold text-primary">Free Quote</p>
+                <h1 class="display-5 mb-5">Get A Free Quote</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-light rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <form method="post" action="{% url 'save_booking' %}" >
+                                    {% csrf_token %}
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name" name="bname" value="{{request.session.signup_name}}">
+                                    <label for="gname">Your Name</label>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email" name="bmail" value="{{request.session.signup_mail}}">
+                                    <label for="gmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cname" placeholder="Child Name" name="bmob">
+                                    <label for="cname">Your Mobile</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cage" placeholder="Child Age" name="bservice" value="{{bcat.Bodycarecat_name}}">
+                                    <label for="cage">Service Type</label>
+                                </div><br>
+                             <div class="form-floating">
+                                    <input type="text" class="form-control border-0 inputtag" id="gname" placeholder="Gurdian Name" name="bsname" value="{{bcat.Bodycare_name}}">
+                                    <label for="gname" class="labe">Service Name</label>
+                                </div><br>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0 inputtag" id="cage" placeholder="Child Age" name="bprice" value="{{bcat.Bodycare_price}}">
+                                    <label for="cage" class="labe">Price</label>
+                                </div>
+                            <div class="col-sm-6" style="margin-left:-162px">
+                                <div class="form-floating"  style="margin-left:-170px;margin-top:20px;width:320px;height:40px">
+                                    <input type="date" class="form-control border-0"   name="bdate" id="bookdate">
+                                    <label for="cname">Date</label>
+                                </div>
+                            <div class="col-sm-6" style="margin-left:350px">
+                                <div class="form-floating"  style="margin-left:-178px;margin-top:-39px;width:305px;height:40px">
+                                    <input type="time" class="form-control border-0" id="cname" placeholder="Child Name" name="btime">
+                                    <label for="cname">Time</label>
+                                </div>
+<!--                            <div class="col-12">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>-->
+<!--                                    <label for="message">Message</label>-->
+<!--                                </div>-->
+                           <style>
+                .inputtag{
+                    width:650px;
+                    margin-left:-330px;
+                }
+                .labe {
+                    margin-left:-330px;
+                }
+            </style>
+                            </div>
+                            <div class="col-12 text-center" style="margin-top:50px;margin-left:90px;">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Book Now</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote End -->
+
+
+<!-- Footer Start -->
+    <footer>
+        <div>
+ <div class="col-md-12 text-center" style="background-color:black;border-radius:25px;width:700px;height:45px;padding:10px;text-align:center;margin-left:400px;margin-top:-10px;">
+
+            <p style="color:#b25c1f"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright ©<script>document.write(new Date().getFullYear());</script>2024 All rights reserved <i class="bi bi-heart-fill" style="color:#b25c1f;" aria-hidden="true"></i> by <a href="{% url 'Home' %}" target="_blank" style="color:#b25c1f;">NansBeautyLounge</a>
+
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+          </div>
+        </div>
+    </footer>
+    <div style="height:20px;"></div>
+    <!-- Footer End -->
+    <!-- JavaScript Libraries -->
+    <script>
+        const today = new Date();
+        const bookingdateInput = document.getElementById("bookdate");
+        bookingdateInput.min = today.toISOString().split("T")[0];
+        setInterval(()=>{
+        today.setDate(today.getDate() + 1);
+         bookingdateInput.min = today.toISOString().split("T")[0];
+        }, 24 * 60 * 1000)
+    </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'Assets/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'Assets/js/main.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+    swal('{{i}}', '', 'warning');
+</script>
+{% elif i.tags == 'error' %}
+<script>
+    swal('{{i}}', '', 'error');
+</script>
+{% elif i.tags == 'info' %}
+<script>
+    swal('{{i}}', '', 'info');
+</script>
+{% else %}
+<script>
+    swal('{{i}}', '', 'success');
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>

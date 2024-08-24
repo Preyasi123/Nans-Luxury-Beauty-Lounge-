@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{%  block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products details</title>
+</head>
+<body>
+<div class="pd-20 card-box mb-30">
+					<div class="clearfix mb-20">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Products details</h4>
+<!--							<p>Use classes <code>( .table-active, .table-success, .table-info, .table-warning, .table-danger )</code> to color table rows or individual cells</p>-->
+						</div>
+						<div class="pull-right">
+							<a href="#contextual-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="table-active">Id</th>
+									<th class="table-active">Category Name</th>
+									<th class="table-active">Products Name</th>
+									<th class="table-active">Products Price</th>
+									<th class="table-active">Description</th>
+									<th class="table-active">Products Image</th>
+									<th class="table-active">Options</th>
+									<th class="table-active"></th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for d in data %}
+								<tr>
+									<td>{{d.id}}</td>
+									<td>{{d.Category}}</td>
+									<td>{{d.Service_name}}</td>
+									<td>{{d.Service_price}}</td>
+									<td>{{d.Service_desc}}</td>
+									<td>
+										<img src="{{d.Service_image.url}}" width="200px" height="200px">
+									</td>
+									<td>
+										<a href="{% url 'service_edit' sid=d.id %}">
+                              <button type="button" class="btn btn-dark btn-icon-text">EDIT<i class="ti-file btn-icon-append"></i></button>
+                           				</a>
+									</td>
+									<td>
+										<a href="{% url 'delete_service' sid=d.id %}">
+                              <button type="button" class="btn btn-dark btn-icon-text">DELETE<i class="ti-trash btn-icon-append"></i></button>
+                            </a>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+</body>
+</html>
+{% endblock %}

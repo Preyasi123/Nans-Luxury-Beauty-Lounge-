@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nans Luxury Beauty Lounge</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'Assets/img/favicon.ico" rel="icon' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'Assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'Assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'Assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+    <body style="color:black;">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+<div class="container1">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg"  style="opacity:100%;width:1255px;display: flex; flex-wrap: wrap;padding:1px 0;margin-left:120px;">
+<a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left:-250px;margin-top:1px;text-align:left;width:200px;">
+            <img src="{% static 'Assets/img/nicon.png' %}" alt="" width="280px" style="margin-top:20px;margin-left:-30px;">
+        </a>
+<!--        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+        <div class="collapse navbar-collapse" id="navbarCollapse" >
+            <div class="navbar-nav ms-auto p-5 p-lg-0" style="dispaly:inline-block;margin:10px 20px;">
+                <a href="{% url 'Home' %}" class="nav-item nav-link active" style="font-family: 'poppins','sans-serif';">Home</a>
+                <style>
+                    .navbar .navbar-nav .nav-link {
+                    color:#AF6834;
+                    text-decoration: none;
+                    position: relative;}
+                    .navbar .navbar-nav .nav-link.active  {
+                    color:#d1824a;
+                     text-decoration:underline;}
+                    .navbar .navbar-nav .nav-link:hover {
+                    color:#80461d;}
+                    . navbar .navbar-nav .nav-link {
+                      text-decoration: none;
+                       position: relative;
+                       color: #AF6834;}
+                     .navbar .navbar-nav .nav-link ::after{
+                         content:'';
+                            width: 0;
+                            height: 3px;
+                            position: absolute;
+                            bottom:-5px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background:#AF6834 ;
+                            transition: width 0.3s;   }
+                     .navbar .navbar-nav .nav-link :hover::after{
+                    width: 50%;}
+                </style>
+                <a href="{% url 'About_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">About</a>
+                <a href="{% url 'our_services' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="font-family: 'poppins','sans-serif';">Categories</a>
+                    <div class="dropdown-menu bg-light m-0">
+                       {% for i in category %}
+                        <a href="{% url 'filtered_services' cat_name=i.catg_name %}" class="dropdown-item" style="font-family: 'poppins','sans-serif';">{{i.catg_name}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="{% url 'productpage' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Products</a>
+                <a href="{% url 'contact_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Contact</a>
+                {% if request.session.signup_name %}
+				<a href="{% url 'logout_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Welcome {{request.session.signup_name}}/Log out</a>
+				{% else %}
+				<a href="{% url 'signup_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Register/Sign in</a>
+				{% endif %}
+                <a href="{% url 'Searchbarfind' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Search</a>
+                 {% if request.session.signup_name %}
+                <a href="{% url 'bookhistory' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Booking History</a>
+                {% endif %}
+                <div class="header-icons" style="margin-top:28px;">
+                 {% if request.session.signup_name %}
+                <a class="shopping-cart" href="{% url 'Cart_page' %}" style="color:#AF6834;"><i class="fas fa-shopping-cart"></i></a>
+                {% endif %}
+                </div>
+            </div>
+<!--            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>-->
+        <style>
+            .btn-primary {
+            background-color: #9b4e15;
+            border-color: #592f10;}
+            .btn-primary:hover{
+              background-color: #ae5e23;
+              border-color: #592f10;}
+        </style>
+        </div>
+    </nav>
+
+    <div style="margin-top:50px;margin-left:-450px;" class="main1">
+           <div style="color:#6B240C;text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+               1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;" class="headanimate">Relax,</div>
+            <div  class="headanimate">
+                <span style="color:#6B240C;text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+               1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;">Refresh, Recharge!!</span>
+                </div>
+            </div>
+    </div>
+        <style>
+            .main1 {
+
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    margin-top:200px;
+    transform:translate(-50%, -50%);
+  font-weight:300;
+  font-size:80px;
+font-family:Forte;
+  color:#AF6834;
+
+  overflow:hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+}
+
+            .headanimate {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+
+
+
+}
+
+.headanimate:first-of-type {    /* For increasing performance
+                       ID/Class should've been used.
+                       For a small demo
+                       it's okaish for now */
+  animation: showup 7s infinite;
+}
+
+.headanimate:last-of-type {
+  width:0px;
+  animation: reveal 7s infinite;
+}
+
+.headanimate:last-of-type span {
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:700px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:700px;}
+}
+        </style>
+<!--<div style="margin-top:30px;">-->
+<!--<form role="search" method="get" action="{% url 'Searchbarfind' %}">-->
+<!--    {% csrf_token %}-->
+<!--        <input type="search" placeholder="Search here ..." name="q">-->
+<!--    <a>-->
+<!--        <button type="submit"><i class="fa fa-search"></i></button>-->
+<!--    </a>-->
+<!-- </form>-->
+<!--</div>-->
+
+</div>
+    <!-- Navbar End -->
+<style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container1{
+    width:100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),transparent),url({% static 'Assets/img/nan_div8.jpg' %});
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0 8%;
+}
+    </style>
+
+    <!-- Carousel Start -->
+    <!-- Carousel End -->
+
+
+    <!-- Top Feature Start -->
+<!--    <div class="container-fluid top-feature py-5 pt-lg-0">-->
+<!--        <div class="container py-5 pt-lg-0">-->
+<!--            <div class="row gx-0">-->
+<!--                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">-->
+<!--                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">-->
+<!--&lt;!&ndash;                        <div class="d-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <i class="fa fa-times text-primary"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    .text-primary {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        color: #906eb4 !important;}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                </style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <div class="ps-3">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <h4>No Hidden Cost</h4>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <span>Clita erat ipsum lorem sit sed stet duo justo</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">-->
+<!--                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">-->
+<!--                        <div class="d-flex">-->
+<!--                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">-->
+<!--                                <i class="fa fa-users text-primary"></i>-->
+<!--                            </div>-->
+<!--                            <div class="ps-3">-->
+<!--                                <h4>Dedicated Team</h4>-->
+<!--                                <span>Clita erat ipsum lorem sit sed stet duo justo</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">-->
+<!--                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">-->
+<!--                        <div class="d-flex">-->
+<!--                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">-->
+<!--                                <i class="fa fa-phone text-primary"></i>-->
+<!--                            </div>-->
+<!--                            <div class="ps-3">-->
+<!--                                <h4>24/7 Available</h4>-->
+<!--                                <span>Clita erat ipsum lorem sit sed stet duo justo</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Top Feature End -->
+
+
+    <!-- About Start -->
+<!--    <div class="container-xxl py-5">-->
+<!--        <div class="container">-->
+<!--            <div class="row g-5 align-items-end">-->
+<!--                <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.3s">-->
+<!--                    <img class="img-fluid rounded" id="imgflip" data-wow-delay="0.3s" class="w3-border w3-padding" src="{% static 'Assets/img/nans_room.jpg' %}">-->
+<!--                <style>-->
+<!--                    .img-fluid {-->
+<!--                        max-width: 300px;-->
+<!--                        height: 400px;}-->
+
+<!--                    #imgflip:hover {-->
+<!--                      -webkit-transform: scaleX(-1);-->
+<!--                      transform: scaleX(-1);}-->
+<!--                </style>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h1 class="display-1 text-primary mb-0">6</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p class="text-primary mb-4">Year of Experience</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h1 class="display-5 mb-4">We Make Your Home Like A Garden</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="btn btn-primary py-3 px-4" href="">Explore More</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="row g-5">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <div class="col-12 col-sm-6 col-lg-12">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <div class="border-start ps-4">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <i class="fa fa-award fa-3x text-primary mb-3"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <h4 class="mb-3">Award Winning</h4>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <div class="col-12 col-sm-6 col-lg-12">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <div class="border-start ps-4">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <i class="fa fa-users fa-3x text-primary mb-3"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <h4 class="mb-3">Dedicated Team</h4>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- About End -->
+
+
+    <!-- Facts Start -->
+<!--    <div class="container-fluid facts my-5 py-5" data-parallax="scroll" data-image-src="{% static 'Assets/img/nan_bghome.jpg' %}">-->
+<!--       <style>-->
+<!--           .facts, .quote {-->
+<!--    background: rgba(157, 96, 158, .6);}-->
+<!--       </style>-->
+<!--        <div class="container py-5">-->
+<!--            <div class="row g-5">-->
+<!--                <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">-->
+<!--                    <h1 class="display-4 text-white" data-toggle="counter-up">1234</h1>-->
+<!--                    <span class="fs-5 fw-semi-bold text-light">Happy Clients</span>-->
+<!--                </div>-->
+<!--                <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">-->
+<!--                    <h1 class="display-4 text-white" data-toggle="counter-up">1234</h1>-->
+<!--                    <span class="fs-5 fw-semi-bold text-light">Garden Complated</span>-->
+<!--                </div>-->
+<!--                <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">-->
+<!--                    <h1 class="display-4 text-white" data-toggle="counter-up">1234</h1>-->
+<!--                    <span class="fs-5 fw-semi-bold text-light">Dedicated Staff</span>-->
+<!--                </div>-->
+<!--                <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">-->
+<!--                    <h1 class="display-4 text-white" data-toggle="counter-up">1234</h1>-->
+<!--                    <span class="fs-5 fw-semi-bold text-light">Awards Achieved</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Facts End -->
+
+
+    <!-- Features Start -->
+<!--    <div class="container-xxl py-5">-->
+<!--        <div class="container">-->
+<!--            <div class="row g-5 align-items-center">-->
+<!--                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">-->
+<!--                    <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>-->
+<!--                    <h1 class="display-5 mb-4" style="color:#c7395f;">Few Reasons Why People Choosing Us!</h1>-->
+<!--                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>-->
+<!--                    <a class="btn btn-primary py-3 px-4" href="">Explore More</a>-->
+<!--                </div>-->
+<!--                <div class="col-lg-6">-->
+<!--                    <div class="row g-4 align-items-center">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="row g-4">-->
+<!--                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">-->
+<!--                                    <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">-->
+<!--                                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">-->
+<!--                                            <i class="fa fa-check fa-3x text-primary"></i>-->
+<!--                                        </div>-->
+<!--                                        <h4 class="mb-0">100% Satisfaction</h4>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">-->
+<!--                                    <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">-->
+<!--                                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">-->
+<!--                                            <i class="fa fa-users fa-3x text-primary"></i>-->
+<!--                                        </div>-->
+<!--                                        <h4 class="mb-0">Dedicated Team</h4>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.7s">-->
+<!--                            <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">-->
+<!--                                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">-->
+<!--                                    <i class="fa fa-tools fa-3x text-primary"></i>-->
+<!--                                </div>-->
+<!--                                <h4 class="mb-0">Modern Equipment</h4>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Features End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="fs-5 fw-bold text-primary">Our Services</p>
+                <h1 class="display-5 mb-5" style="color:#893e08;">Services That We Offer For You</h1>
+            </div>
+            <div class="row g-4">
+                {% for i in category %}
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded d-flex h-100">
+                        <div class="service-img rounded">
+                            <img class="img-fluid" src="{{i.catg_image.url}}" alt="">
+                        </div>
+                        <div class="service-text rounded p-5">
+                            <div class="btn-square rounded-circle mx-auto mb-3">
+                                <img class="img-fluids2" src="{% static 'Assets/img/nl2.png' %}" alt="Icon">
+                                <style>
+                                    .img-fluids2 {
+                                    width:150px;
+                                    height: 110px;
+
+                                    opacity:0.8;}
+                                    .image-fluids2:hover{
+                                    opacity:1;}
+                                    .service-item .service-text {
+                                        background: #FFFFFF;
+                                        box-shadow: 0 0 30px rgba(175, 104, 52,0.3);
+                                        transition: .3s;}
+                                    .rounded {
+                                        border-radius: 1px;}
+                                    .service-item .service-text .btn-square {
+                                        width: 100px;
+                                        height: 100px;
+                                        background-color: rgba(156, 83, 29,0.3);
+                                        transition: .5s;}
+                                </style>
+                            </div>
+                            <h4 class="mb-3">{{i.catg_name}}</h4>
+                            <p class="mb-4" style="text-align:left;">{{i.catg_desc}}</p>
+                            <a class="btn btn-sm" href="{% url 'filtered_services' cat_name=i.catg_name %}" style="color:#AF6834"><i class="fa fa-plus text-primary me-2" style="color:#AF6834"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <style>
+                    .text-primary {
+    color: #AF6834 !important;
+                </style>
+
+<!--                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">-->
+<!--                    <div class="service-item rounded d-flex h-100">-->
+<!--                        <div class="service-img rounded">-->
+<!--                            <img class="img-fluid" src="{% static 'Assets/img/service-5.jpg' %}" alt="">-->
+<!--                        </div>-->
+<!--&lt;!&ndash;                        <div class="service-text rounded p-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="btn-square rounded-circle mx-auto mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="img-fluid" src="{% static 'Assets/img/icon/icon-8.png' %}" alt="Icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h4 class="mb-3">Green Technology</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">-->
+<!--                    <div class="service-item rounded d-flex h-100">-->
+<!--                        <div class="service-img rounded">-->
+<!--                            <img class="img-fluid" src="{% static 'Assets/img/service-6.jpg' %}" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="service-text rounded p-5">-->
+<!--                            <div class="btn-square rounded-circle mx-auto mb-3">-->
+<!--                                <img class="img-fluid" src="{% static 'Assets/img/icon/icon-2.png' %}" alt="Icon">-->
+<!--                            </div>-->
+<!--                            <h4 class="mb-3">Urban Gardening</h4>-->
+<!--                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>-->
+<!--                            <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Quote Start -->
+<!--    <div class="container-fluid quote my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-2.jpg">-->
+<!--        <div class="container py-5">-->
+<!--            <div class="row justify-content-center">-->
+<!--                <div class="col-lg-7">-->
+<!--                    <div class="bg-white rounded p-4 p-sm-5 wow fadeIn" data-wow-delay="0.5s">-->
+<!--                        <h1 class="display-5 text-center mb-5">Get A Free Quote</h1>-->
+<!--                        <div class="row g-3">-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">-->
+<!--                                    <label for="gname">Your Name</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">-->
+<!--                                    <label for="gmail">Your Email</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">-->
+<!--                                    <label for="cname">Your Mobile</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <input type="text" class="form-control bg-light border-0" id="cage" placeholder="Child Age">-->
+<!--                                    <label for="cage">Service Type</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-12">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>-->
+<!--                                    <label for="message">Message</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-12 text-center">-->
+<!--                                <button class="btn btn-primary py-3 px-4" type="submit">Submit Now</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Quote End -->
+
+
+    <!-- Projects Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="fs-5 fw-bold text-primary">Our Works</p>
+                <h1 class="display-5 mb-5" style="color:#893e08;">Some Of Our Wonderful Brides..</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Projects End -->
+    <!-- Work Start -->
+    <div class="container-xxl py-5" style="margin-top:-60px;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridehindu1.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <style>
+                            .img, svg {
+                     vertical-align: middle;}
+                        </style>
+                        <div class="team-text">
+                            <h4 class="mb-0">Hindu engagement look</h4>
+                            <p class="text-primary">Kollam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridech1.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <div class="team-text">
+                            <h4 class="mb-0">Christian bridal look</h4>
+                            <p class="text-primary">Kottayam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridmu1.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <div class="team-text">
+                            <h4 class="mb-0">Muslim bridal look</h4>
+                            <p class="text-primary">Calicut</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="container-xxl py-5" style="margin-top:-60px;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridech2.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <style>
+                            .img, svg {
+                     vertical-align: middle;}
+                        </style>
+                        <div class="team-text">
+                            <h4 class="mb-0">Christian reception look</h4>
+                            <p class="text-primary">Trivandrum</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridemu2.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <div class="team-text">
+                            <h4 class="mb-0">Muslim bridal look</h4>
+                            <p class="text-primary">Eranakulam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'Assets/img/bridehindu2.jpeg' %}" alt="" style="max-width:100%;height:480px;">
+                        <div class="team-text">
+                            <h4 class="mb-0">Hindu bridal look</h4>
+                            <p class="text-primary">Kannur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+<!--    <div class="container-xxl py-5">-->
+<!--        <div class="container">-->
+<!--            <div class="row g-5">-->
+<!--                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">-->
+<!--                    <p class="fs-5 fw-bold text-primary">Testimonial</p>-->
+<!--                    <h1 class="display-5 mb-5" style="color:#c7395f;">What Our Clients Say About Us!</h1>-->
+<!--                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit sed stet lorem sit clita duo justo.</p>-->
+<!--                    <a class="btn btn-primary py-3 px-4" href="">See More</a>-->
+<!--                </div>-->
+<!--                <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">-->
+<!--                    <div class="owl-carousel testimonial-carousel">-->
+<!--                        <div class="testimonial-item">-->
+<!--                            <img class="img-fluid rounded mb-3" src="{% static 'Assets/img/testimonial-1.jpg' %}" alt="">-->
+<!--                            <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>-->
+<!--                            <h4>Client Name</h4>-->
+<!--                            <span>Profession</span>-->
+<!--                        </div>-->
+<!--                        <div class="testimonial-item">-->
+<!--                            <img class="img-fluid rounded mb-3" src="{% static 'Assets/img/testimonial-2.jpg' %}" alt="">-->
+<!--                            <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>-->
+<!--                            <h4>Client Name</h4>-->
+<!--                            <span>Profession</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Testimonial End -->
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Footer Start -->
+    <footer>
+        <div>
+ <div class="col-md-12 text-center" style="background-color:black;border-radius:25px;width:700px;height:45px;padding:10px;text-align:center;margin-left:400px;margin-top:-10px;">
+
+            <p style="color:#b25c1f"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright ©<script>document.write(new Date().getFullYear());</script>2024 All rights reserved <i class="bi bi-heart-fill" style="color:#b25c1f;" aria-hidden="true"></i> by <a href="{% url 'Home' %}" target="_blank" style="color:#b25c1f;">NansBeautyLounge</a>
+
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+          </div>
+        </div>
+    </footer>
+    <div style="height:20px;"></div>
+    <!-- Footer End -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'Assets/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'Assets/js/main.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+    swal('{{i}}', '', 'warning');
+</script>
+{% elif i.tags == 'error' %}
+<script>
+    swal('{{i}}', '', 'error');
+</script>
+{% elif i.tags == 'info' %}
+<script>
+    swal('{{i}}', '', 'info');
+</script>
+{% else %}
+<script>
+    swal('{{i}}', '', 'success');
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>

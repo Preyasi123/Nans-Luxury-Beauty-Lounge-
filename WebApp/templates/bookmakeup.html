@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nans Luxury Beauty Lounge</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'Assets/img/favicon.ico" rel="icon' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'Assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Assets/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'Assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'Assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+     <!-- Navbar Start -->
+            <div class="container1">
+            <nav class="navbar navbar-expand-lg  "  style="opacity:100%;width:1255px;display: flex; flex-wrap: wrap;padding:1px 0;margin-left:120px;">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left:-130px;margin-top:1px">
+            <h1 class="knockout"  >Nans Luxury Beauty Lounge</h1>
+            <style>
+                .knockout {
+  vertical-align: middle;
+  text-align: left;
+  margin-left:-130px;
+  font-family: 'gwendolyn', cursive;
+  font-weight:bolder;
+  font-size:50px;
+  color: blue;
+  color: #fff;
+   background: linear-gradient(110deg, #d1b29c 33%, rgba(0, 0, 0, 0) 33%), linear-gradient(110deg, #a65419 34%, #90450e 34%);
+  background-size: 400%;
+   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.knockout{
+    animation: Gradient 2s ease infinite;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 1s ease infinite;
+}
+ @-webkit-keyframes Gradient {
+  0% {
+    background-position: 50% 100%
+  }
+  50% {
+    background-position: 5% 30%
+  }
+  100% {
+    background-position: 30% 5%
+  }
+}
+        </style>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{% url 'Home' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Home</a>
+                <style>
+                    .navbar .navbar-nav .nav-link {
+                    color:#AF6834;
+                    text-decoration: none;
+                    position: relative;}
+                    .navbar .navbar-nav .nav-link.active  {
+                    color:#d1824a;
+                     text-decoration:underline;}
+                    .navbar .navbar-nav .nav-link:hover {
+                    color:#80461d;}
+                    . navbar .navbar-nav .nav-link {
+                      text-decoration: none;
+                       position: relative;
+                       color: #AF6834;}
+                     .navbar .navbar-nav .nav-link ::after{
+                         content:'';
+                            width: 0;
+                            height: 3px;
+                            position: absolute;
+                            bottom:-5px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background:#AF6834 ;
+                            transition: width 0.3s;   }
+                     .navbar .navbar-nav .nav-link :hover::after{
+                    width: 50%;}
+                </style>
+                <a href="{% url 'About_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">About</a>
+                <a href="{% url 'our_services' %}" class="nav-item nav-link active" style="font-family: 'poppins','sans-serif';">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="font-family: 'poppins','sans-serif';">Categories</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <style>
+                            .bg-light {
+                                 background-color: #efdbcc !important;
+                                        }
+                        </style>
+                       {% for i in category %}
+                        <a href="{% url 'filtered_services' cat_name=i.catg_name %}" class="dropdown-item" style="font-family: 'poppins','sans-serif';">{{i.catg_name}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="{% url 'contact_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Contact</a>
+                {% if request.session.signup_name %}
+				<a href="{% url 'logout_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Welcome {{request.session.signup_name}}/Log out</a>
+				{% else %}
+				<a href="{% url 'signup_page' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Register/Sign in</a>
+				{% endif %}
+                <a href="{% url 'Searchbarfind' %}" class="nav-item nav-link" style="font-family: 'poppins','sans-serif';">Search</a>
+
+            </div>
+<!--            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>-->
+        <style>
+            .btn-primary {
+            background-color: #c7395f;
+            border-color: #f085c9;}
+            .btn-primary:hover{
+              background-color: #9e83bb;
+              border-color: #f085c9;}
+        </style>
+        <style>
+          .text-primary {
+           color: #AF6834 !important;
+        </style>
+        </div>
+    </nav>
+ <div>
+    <h1 class="about" style="animation:fadeInUp 2s ease;">Book Now</h1>
+</div>
+<style>
+     .about{
+     font-size: 9rem;
+     font-weight:500;
+     color:#d1b29c;
+     text-align:center;
+     margin-top: 180px;
+    }
+</style>
+<style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container1{
+    width:100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),transparent),url({% static 'Assets/img/nan_div3.jpg' %});
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0 8%;
+}
+    </style>
+    </div>
+<style>
+            .btn-primary {
+            background-color: #9b4e15;
+            border-color: #592f10;}
+            .btn-primary:hover{
+              background-color: #ae5e23;
+              border-color: #592f10;}
+        </style>
+    <!-- Navbar End -->
+
+    <!-- Quote Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="fs-5 fw-bold text-primary">Booking Page</p>
+                <h1 class="display-5 mb-5" style="color:#893e08;">Book your service</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-light rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <form method="post" action="{% url 'save_booking' %}">
+                                    {% csrf_token %}
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name" name="bname" value="{{request.session.signup_name}}">
+                                    <label for="gname">Your Name</label>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email" name="bmail" value="{{request.session.signup_mail}}">
+                                    <label for="gmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cname" placeholder="Child Name" name="bmob">
+                                    <label for="cname">Your Mobile</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cage" placeholder="Child Age" name="bservice" value="{{mcat.Makeupcat_name}}">
+                                    <label for="cage">Service Type</label>
+                                </div><br>
+                             <div class="form-floating">
+                                    <input type="text" class="form-control border-0 inputtag" id="gname" placeholder="Gurdian Name" name="bsname" value="{{mcat.Makeup_name}}">
+                                    <label for="gname" class="labe">Service Name</label>
+                                </div><br>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0 inputtag" id="cage" placeholder="Child Age" name="bprice" value="{{mcat.Makeup_price}}">
+                                    <label for="cage" class="labe">Price</label>
+                                </div>
+                            <div class="col-sm-6" style="margin-left:-162px">
+                                <div class="form-floating"  style="margin-left:-170px;margin-top:20px;width:320px;height:40px">
+                                    <input type="date" class="form-control border-0"  placeholder="Child Name" name="bdate"  id="bookdate">
+                                    <label for="cname">Date</label>
+                                </div>
+                            <div class="col-sm-6" style="margin-left:350px">
+                                <div class="form-floating"  style="margin-left:-178px;margin-top:-39px;width:305px;height:40px">
+                                    <input type="time" class="form-control border-0" id="cname" placeholder="Child Name" name="btime">
+                                    <label for="cname">Time</label>
+                                </div>
+<!--                            <div class="col-12">-->
+<!--                                <div class="form-floating">-->
+<!--                                    <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>-->
+<!--                                    <label for="message">Message</label>-->
+<!--                                </div>-->
+                           <style>
+                .inputtag{
+                    width:650px;
+                    margin-left:-330px;
+                }
+                .labe {
+                    margin-left:-330px;
+                }
+            </style>
+                            </div>
+                            <div class="col-12 text-center" style="margin-top:50px;margin-left:90px;">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Book Now</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote End -->
+
+
+<!-- Footer Start -->
+    <footer>
+        <div>
+ <div class="col-md-12 text-center" style="background-color:black;border-radius:25px;width:700px;height:45px;padding:10px;text-align:center;margin-left:400px;margin-top:-10px;">
+
+            <p style="color:#b25c1f"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright ©<script>document.write(new Date().getFullYear());</script>2024 All rights reserved <i class="bi bi-heart-fill" style="color:#b25c1f;" aria-hidden="true"></i> by <a href="{% url 'Home' %}" target="_blank" style="color:#b25c1f;">NansBeautyLounge</a>
+
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+          </div>
+        </div>
+    </footer>
+    <div style="height:20px;"></div>
+    <!-- Footer End -->
+    <!-- JavaScript Libraries -->
+  <script>
+        const today = new Date();
+        const bookingdateInput = document.getElementById("bookdate");
+        bookingdateInput.min = today.toISOString().split("T")[0];
+        setInterval(()=>{
+        today.setDate(today.getDate() + 1);
+         bookingdateInput.min = today.toISOString().split("T")[0];
+        }, 24 * 60 * 1000)
+    </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'Assets/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'Assets/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'Assets/js/main.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+    swal('{{i}}', '', 'warning');
+</script>
+{% elif i.tags == 'error' %}
+<script>
+    swal('{{i}}', '', 'error');
+</script>
+{% elif i.tags == 'info' %}
+<script>
+    swal('{{i}}', '', 'info');
+</script>
+{% else %}
+<script>
+    swal('{{i}}', '', 'success');
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>

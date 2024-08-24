@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{%  block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Makeup Service details</title>
+</head>
+<body>
+<div class="pd-20 card-box mb-30">
+					<div class="clearfix mb-20">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Makeup Service details</h4>
+<!--							<p>Use classes <code>( .table-active, .table-success, .table-info, .table-warning, .table-danger )</code> to color table rows or individual cells</p>-->
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="table-active">Id</th>
+									<th class="table-active">Category Name</th>
+									<th class="table-active">Service Category</th>
+									<th class="table-active">Service Name</th>
+									<th class="table-active">Service Price</th>
+									<th class="table-active">Description</th>
+									<th class="table-active">Service Image</th>
+									<th class="table-active">Options</th>
+									<th class="table-active"></th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for i in Mkcat %}
+								<tr>
+									<td>{{i.id}}</td>
+									<td>{{i.Makeupcat_name}}</td>
+									<td>{{i.Makeup_category}}</td>
+									<td>{{i.Makeup_name}}</td>
+									<td>{{i.Makeup_price}}</td>
+									<td>{{i.Makeup_desc}}</td>
+									<td>
+										<img src="{{i.Makeup_image.url}}" width="200px" height="200px">
+									</td>
+									<td>
+										<a href="{% url 'makeup_edit' mkid=i.id %} " >
+                              <button type="button" class="btn btn-dark btn-icon-text">EDIT<i class="ti-file btn-icon-append"></i></button>
+                           				</a>
+									</td>
+									<td>
+										<a href="{% url 'makeup_delete' mkid=i.id %} " >
+                              <button type="button" class="btn btn-dark btn-icon-text">DELETE<i class="ti-trash btn-icon-append"></i></button>
+                            </a>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+</body>
+</html>
+{% endblock %}
